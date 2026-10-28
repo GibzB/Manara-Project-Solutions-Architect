@@ -1,8 +1,8 @@
 {
-  "name": "image-processing-pipeline-cdk",
+  "name": "serverless-image-processing-pipeline-cdk",
   "version": "1.0.0",
   "bin": {
-    "image-processing-pipeline-cdk": "dist/index.js"
+    "serverless-image-processing-pipeline-cdk": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
