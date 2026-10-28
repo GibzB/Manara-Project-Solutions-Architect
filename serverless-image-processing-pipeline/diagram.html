@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Serverless Image Processing Pipeline</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .button:hover { background-color: #0056b3; }
+        .container { max-width: 800px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Serverless Image Processing Pipeline Architecture</h1>
+        <p>Click the button below to view and edit the architecture diagram in draw.io:</p>
+        <a href="https://viewer.diagrams.net/#ReJzNmN1umzAUx-_3FBZ7gMSQkEQJlZZkzSZ10yo07dqBE0A1GBnThD39jqHD2dpeVDNiucnxAft8_Cz_gU1-OUhWpl9EDJzEl8ChM9d1SNwEzsJbOSSRWYzOzgizn4CDKY7qLIaqvaCE4Coru0EkigIi1dpMSnHu3CfBu1VKlkBvhBHjZvQji1UaOK7n-Z3jE2RJqpfy5zOHHFn0kEhRF7jQ-1P7c0jO9BTMp0pZLM7avHlHyEYKobSBZn7ZAedEVzF1Js-dbXQJhXrlOjbjkfEa89zxDG-bfK9AYkDV6NzbhCAO6PqcZgrCkkUQnLGj61TlHN04G6SCyx-BqNPFaSMdQOSgZEPwnhmW0nR_564dVNvpUyd8tBl2NHma0uc76RJ-nr3XZ__h22dyYArOrBkqe9d6-rM-VYhxv7SmkCoViSgY__jbtzaFPCUew4nVXN2xI_Btv3N2ggsZ6L2FlekV_6qLVKKW2AINXTGZgNIdfKlaCZyp7LFb4G01zXskYRuNbOvoAdRgW8o6FH8kKJ6BMrcNZWGg3IfkvoYahgLiWweyHAnI3ABZ2Aay6oHcsfwYs6FoLK3T0PI4Co6FwbGyjYPSnsceKpUVuJAoBj666NQ-HHckOCsDh75c8L_Q8a4eUkQd30pRDEfFvszTsXReb-sei3Wlp0bqh3xopPYlno6l8fRK5Kl1ladG5vdNwXKx3_Z14htECUHU8AwLkp5ddaGvoVm-Hc1Yan99glmXe2r0Pvwamgo5xzdLsAvD9a3BcMfS-msY1sXeNWIfKijJbV1EWu6roR_CvKW1E8z9D4TetSD0m0n3LUP7zJeam1-OxI08" class="button" target="_blank">Open in draw.io</a>
+        <p style="margin-top: 20px; color: #666; font-size: 14px;">
+            URL: <a href="https://viewer.diagrams.net/#ReJzNmN1umzAUx-_3FBZ7gMSQkEQJlZZkzSZ10yo07dqBE0A1GBnThD39jqHD2dpeVDNiucnxAft8_Cz_gU1-OUhWpl9EDJzEl8ChM9d1SNwEzsJbOSSRWYzOzgizn4CDKY7qLIaqvaCE4Coru0EkigIi1dpMSnHu3CfBu1VKlkBvhBHjZvQji1UaOK7n-Z3jE2RJqpfy5zOHHFn0kEhRF7jQ-1P7c0jO9BTMp0pZLM7avHlHyEYKobSBZn7ZAedEVzF1Js-dbXQJhXrlOjbjkfEa89zxDG-bfK9AYkDV6NzbhCAO6PqcZgrCkkUQnLGj61TlHN04G6SCyx-BqNPFaSMdQOSgZEPwnhmW0nR_564dVNvpUyd8tBl2NHma0uc76RJ-nr3XZ__h22dyYArOrBkqe9d6-rM-VYhxv7SmkCoViSgY__jbtzaFPCUew4nVXN2xI_Btv3N2ggsZ6L2FlekV_6qLVKKW2AINXTGZgNIdfKlaCZyp7LFb4G01zXskYRuNbOvoAdRgW8o6FH8kKJ6BMrcNZWGg3IfkvoYahgLiWweyHAnI3ABZ2Aay6oHcsfwYs6FoLK3T0PI4Co6FwbGyjYPSnsceKpUVuJAoBj666NQ-HHckOCsDh75c8L_Q8a4eUkQd30pRDEfFvszTsXReb-sei3Wlp0bqh3xopPYlno6l8fRK5Kl1ladG5vdNwXKx3_Z14htECUHU8AwLkp5ddaGvoVm-Hc1Yan99glmXe2r0Pvwamgo5xzdLsAvD9a3BcMfS-msY1sXeNWIfKijJbV1EWu6roR_CvKW1E8z9D4TetSD0m0n3LUP7zJeam1-OxI08" target="_blank">https://viewer.diagrams.net/#ReJzNmN1umzAUx-_3FBZ7gMSQkEQJlZZkzSZ10yo07dqBE0A1GBnThD39jqHD2dpeVDNiucnxAft8_Cz_gU1-OUhWpl9EDJzEl8ChM9d1SNwEzsJbOSSRWYzOzgizn4CDKY7qLIaqvaCE4Coru0EkigIi1dpMSnHu3CfBu1VKlkBvhBHjZvQji1UaOK7n-Z3jE2RJqpfy5zOHHFn0kEhRF7jQ-1P7c0jO9BTMp0pZLM7avHlHyEYKobSBZn7ZAedEVzF1Js-dbXQJhXrlOjbjkfEa89zxDG-bfK9AYkDV6NzbhCAO6PqcZgrCkkUQnLGj61TlHN04G6SCyx-BqNPFaSMdQOSgZEPwnhmW0nR_564dVNvpUyd8tBl2NHma0uc76RJ-nr3XZ__h22dyYArOrBkqe9d6-rM-VYhxv7SmkCoViSgY__jbtzaFPCUew4nVXN2xI_Btv3N2ggsZ6L2FlekV_6qLVKKW2AINXTGZgNIdfKlaCZyp7LFb4G01zXskYRuNbOvoAdRgW8o6FH8kKJ6BMrcNZWGg3IfkvoYahgLiWweyHAnI3ABZ2Aay6oHcsfwYs6FoLK3T0PI4Co6FwbGyjYPSnsceKpUVuJAoBj666NQ-HHckOCsDh75c8L_Q8a4eUkQd30pRDEfFvszTsXReb-sei3Wlp0bqh3xopPYlno6l8fRK5Kl1ladG5vdNwXKx3_Z14htECUHU8AwLkp5ddaGvoVm-Hc1Yan99glmXe2r0Pvwamgo5xzdLsAvD9a3BcMfS-msY1sXeNWIfKijJbV1EWu6roR_CvKW1E8z9D4TetSD0m0n3LUP7zJeam1-OxI08</a>
+        </p>
+    </div>
+</body>
+</html>
