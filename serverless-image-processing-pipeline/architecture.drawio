@@ -1,15 +1,8 @@
-import zlib
-import base64
-import json
-
-# Serverless Image Processing Pipeline - Architecture Diagram
-# Using draw.io XML format
-
-xml = '''<mxGraphModel dx="1422" dy="739" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" background="#ffffff" math="0" shadow="0">
+<mxGraphModel dx="1422" dy="739" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" background="#ffffff" math="0" shadow="0">
   <root>
     <mxCell id="0"/>
     <mxCell id="1" parent="0"/>
-    <mxCell id="2" value="Client/User" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+    <mxCell id="2" value="Client" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
       <mxGeometry x="40" y="40" width="140" height="60" as="geometry"/>
     </mxCell>
     <mxCell id="3" value="API Gateway" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -73,43 +66,4 @@ xml = '''<mxGraphModel dx="1422" dy="739" grid="1" gridSize="10" guides="1" tool
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
   </root>
-</mxGraphModel>'''
-
-# Compress and encode the diagram
-compressed = zlib.compress(xml.encode('utf-8'))
-encoded = base64.urlsafe_b64encode(compressed).decode('utf-8')
-url = f'https://viewer.diagrams.net/#R{encoded}'
-
-# Create HTML with clickable link
-html = f'''<!DOCTYPE html>
-<html>
-<head>
-    <title>Serverless Image Processing Pipeline</title>
-    <style>
-        body {{ font-family: Arial, sans-serif; padding: 20px; }}
-        .button {{
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 16px;
-        }}
-        .button:hover {{ background-color: #0056b3; }}
-        .container {{ max-width: 800px; margin: 0 auto; }}
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Serverless Image Processing Pipeline Architecture</h1>
-        <p>Click the button below to view and edit the architecture diagram in draw.io:</p>
-        <a href="{url}" class="button" target="_blank">Open in draw.io</a>
-        <p style="margin-top: 20px; color: #666; font-size: 14px;">
-            URL: <a href="{url}" target="_blank">{url}</a>
-        </p>
-    </div>
-</body>
-</html>'''
-
-print(html)
+</mxGraphModel>

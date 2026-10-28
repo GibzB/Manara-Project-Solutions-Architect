@@ -8,11 +8,13 @@ A serverless image processing pipeline that automatically processes images uploa
 
 ## Architecture Diagram
 
-[![Open in draw.io](https://img.shields.io/badge/Open%20in-draw.io-blue)](https://viewer.diagrams.net/#ReJzNmN1umzAUx-_3FBZ7gMSQkEQJlZZkzSZ10yo07dqBE0A1GBnThD39jqHD2dpeVDNiucnxAft8_Cz_gU1-OUhWpl9EDJzEl8ChM9d1SNwEzsJbOSSRWYzOzgizn4CDKY7qLIaqvaCE4Coru0EkigIi1dpMSnHu3CfBu1VKlkBvhBHjZvQji1UaOK7n-Z3jE2RJqpfy5zOHHFn0kEhRF7jQ-1P7c0jO9BTMp0pZLM7avHlHyEYKobSBZn7ZAedEVzF1Js-dbXQJhXrlOjbjkfEa89zxDG_DWKrRabe5QBzQ9TnNFIQliyA4YzPXqco5unEiSAWXP2JQpwvRBjmAyEHJhuA9M6yi6f7OXSeottOnJvhoM2xm8jSlT3XS5fo8ca9P_MO3z-TAFJxZM1T2rvX0Z32qEONWaU0hVSoSUTD-8bdvbQp5SjyGE6u5umNH4Nt-0-wEFzLQ2wor0yv-VRepRC2xBZq3YjIBpTv4UrUSOFPZY7fA22qa90jCNhrZ1tEDDLelrEPxR4LiGShz21AWBsp9SO5rqGEoIL51IMuRgMwNkIVtIKseyB3LjzEbisbSOg2tjKPgWBgcK9s4KO157KFSWYELiWLgo4tO7cNxR4KzMnDoywX_Cx3v6vlE1PGtFMM9o1D7Mk_H0nm9rXss1pWeGqn_XoEcDIh9iadjaTy9EnlqXeWpkfl9U7Bc7Ld9nfjyUEIQNTzDgqRnV13oa2iWb0czltpfn2DW5Z4avQ-_hqZCzvGlEuzCcH1rMNyxtP4ahnWxd43YhwpKclsXkZb7auiHMG9p7QRz_wOhdy0I_WbSfcbQPvOR5uYX_N6Lbg)
+Open the architecture diagram in draw.io:
 
-Click the button above to view and edit the architecture diagram in draw.io.
+[Download architecture.drawio](serverless-image-processing-pipeline/architecture.drawio)
 
-## Architecture
+Then open it in [draw.io](https://app.diagrams.net) or draw.io Desktop.
+
+### Architecture Overview
 
 ```
 ┌─────────────┐     ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
