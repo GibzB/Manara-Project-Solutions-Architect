@@ -1,0 +1,22 @@
+{
+  "name": "image-processing-pipeline-cdk",
+  "version": "1.0.0",
+  "bin": {
+    "image-processing-pipeline-cdk": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "aws-cdk": "^2.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.0",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.0.0",
+    "constructs": "^10.0.0"
+  }
+}

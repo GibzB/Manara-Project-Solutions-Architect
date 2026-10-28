@@ -1,0 +1,38 @@
+{
+  "app": "npx ts-node -r tsconfig-paths/register index.ts",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "package-lock.json",
+      "node_modules"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
+    "@aws-cdk/core:checkSecretUsage": true,
+    "@aws-cdk/core:target-partitions": [
+      "aws",
+      "aws-cn"
+    ],
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
+    "@aws-cdk/aws-ecs:arnFormatIncludesZone": true,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/core:validateSnapshotRemovalPolicy": true,
+    "@aws-cdk/aws-s3:createDefaultLoggingPolicy": true,
+    "@aws-cdk/aws-apigateway:createEndpointOutputs": true,
+    "@aws-cdk/core:cfnResponseUseDefaultTimeout": true,
+    "@aws-cdk/aws-ec2:ec2SumDefaultUserData": true,
+    "@aws-cdk/aws-eks:clusterNameIncludesName": true,
+    "@aws-cdk/aws-cloudfront:defaultBehaviorViewerProtocolPolicy": true,
+    "@aws-cdk/aws-ecs:imdsV1Disable": true,
+    "@aws-cdk/aws-route53-patters:useCertificate": true,
+    "@aws-cdk/customresources:installLatestAwsSdkDefault": false,
+    "@aws-cdk/aws-rds:databaseProxyOptions": true,
+    "@aws-cdk/aws-s3:notificationConfigsForBucketNotifications": true
+  }
+}
