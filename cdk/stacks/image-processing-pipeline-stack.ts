@@ -19,13 +19,20 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
 
     const { environment } = props;
 
+    // Generate unique bucket names using timestamp to avoid conflicts
+    const timestamp = new Date().getTime();
+    const sourceBucketName = `source-images-${environment}-${timestamp}`;
+    const destinationBucketName = `processed-images-${environment}-${timestamp}`;
+    const tempBucketName = `processing-temp-${environment}-${timestamp}`;
+    const accessLogsBucketName = `s3-access-logs-${environment}-${timestamp}`;
+
     // ========================================
     // 1. Create S3 Buckets
     // ========================================
 
     // 1.1 Source Bucket - for incoming images
     const sourceBucket = new s3.Bucket(this, 'SourceBucket', {
-      bucketName: `source-images-${environment}`,
+      bucketName: sourceBucketName,
       versioned: true,
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
@@ -36,13 +43,13 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
 
     // Add S3 event notification to SQS queue when objects are created
     const eventQueue = new sqs.Queue(this, 'EventQueue', {
-      queueName: `s3-events-${environment}`,
+      queueName: `s3-events-${environment}-${timestamp}`,
       retentionPeriod: cdk.Duration.days(14),
     });
 
     // Dead-letter queue for failed event processing
     const eventDeadLetterQueue = new sqs.Queue(this, 'EventDeadLetterQueue', {
-      queueName: `s3-events-dlq-${environment}`,
+      queueName: `s3-events-dlq-${environment}-${timestamp}`,
       retentionPeriod: cdk.Duration.days(14),
     });
 
@@ -78,7 +85,7 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
     // Create Dead Letter Queue (DLQ) for failed image processing messages
     // Retention: 14 days
     const imageProcessingDeadLetterQueue = new sqs.Queue(this, 'ImageProcessingDeadLetterQueue', {
-      queueName: `image-processing-dlq-${environment}`,
+      queueName: `image-processing-dlq-${environment}-${timestamp}`,
       retentionPeriod: cdk.Duration.days(14),
       visibilityTimeout: cdk.Duration.minutes(5),
       encryption: sqs.QueueEncryption.SQS_MANAGED,
@@ -89,7 +96,7 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
     // Message retention: 4 days (345600 seconds)
     // Redrive policy: maxReceiveCount=3 pointing to DLQ
     const imageProcessingQueue = new sqs.Queue(this, 'ImageProcessingQueue', {
-      queueName: `image-processing-queue-${environment}`,
+      queueName: `image-processing-queue-${environment}-${timestamp}`,
       visibilityTimeout: cdk.Duration.minutes(5),
       retentionPeriod: cdk.Duration.days(4),
       encryption: sqs.QueueEncryption.SQS_MANAGED,
@@ -104,7 +111,7 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
     // ========================================
 
     const destinationBucket = new s3.Bucket(this, 'DestinationBucket', {
-      bucketName: `processed-images-${environment}`,
+      bucketName: destinationBucketName,
       versioned: true,
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
@@ -118,7 +125,7 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
       this,
       'OriginAccessIdentity',
       {
-        comment: `OAI for processed-images-${environment}`,
+        comment: `OAI for ${destinationBucketName}`,
       }
     );
 
@@ -130,7 +137,7 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
     // ========================================
 
     const tempBucket = new s3.Bucket(this, 'TempBucket', {
-      bucketName: `processing-temp-${environment}`,
+      bucketName: tempBucketName,
       versioned: false,
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
@@ -144,7 +151,7 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
     // ========================================
 
     const accessLogsBucket = new s3.Bucket(this, 'AccessLogsBucket', {
-      bucketName: `s3-access-logs-${environment}`,
+      bucketName: accessLogsBucketName,
       versioned: true,
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
@@ -218,67 +225,67 @@ export class ImageProcessingPipelineStack extends cdk.Stack {
     new cdk.CfnOutput(this, 'SourceBucketName', {
       value: sourceBucket.bucketName,
       description: 'Source bucket for incoming images',
-      exportName: `SourceBucketName-${environment}`,
+      exportName: `SourceBucketName-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'DestinationBucketName', {
       value: destinationBucket.bucketName,
       description: 'Destination bucket for processed images',
-      exportName: `DestinationBucketName-${environment}`,
+      exportName: `DestinationBucketName-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'TempBucketName', {
       value: tempBucket.bucketName,
       description: 'Temporary bucket for intermediate files',
-      exportName: `TempBucketName-${environment}`,
+      exportName: `TempBucketName-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'AccessLogsBucketName', {
       value: accessLogsBucket.bucketName,
       description: 'Access logs bucket',
-      exportName: `AccessLogsBucketName-${environment}`,
+      exportName: `AccessLogsBucketName-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'EventQueueUrl', {
       value: eventQueue.queueUrl,
       description: 'SQS queue for S3 events',
-      exportName: `EventQueueUrl-${environment}`,
+      exportName: `EventQueueUrl-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'EventQueueArn', {
       value: eventQueue.queueArn,
       description: 'SQS queue ARN for S3 events',
-      exportName: `EventQueueArn-${environment}`,
+      exportName: `EventQueueArn-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'ProcessingQueueUrl', {
       value: imageProcessingQueue.queueUrl,
       description: 'SQS queue for image processing',
-      exportName: `ProcessingQueueUrl-${environment}`,
+      exportName: `ProcessingQueueUrl-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'ProcessingQueueArn', {
       value: imageProcessingQueue.queueArn,
       description: 'SQS queue ARN for image processing',
-      exportName: `ProcessingQueueArn-${environment}`,
+      exportName: `ProcessingQueueArn-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'DeadLetterQueueUrl', {
       value: imageProcessingDeadLetterQueue.queueUrl,
       description: 'Dead letter queue for failed image processing messages',
-      exportName: `DeadLetterQueueUrl-${environment}`,
+      exportName: `DeadLetterQueueUrl-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'DeadLetterQueueArn', {
       value: imageProcessingDeadLetterQueue.queueArn,
       description: 'Dead letter queue ARN for failed image processing messages',
-      exportName: `DeadLetterQueueArn-${environment}`,
+      exportName: `DeadLetterQueueArn-${environment}-${timestamp}`,
     });
 
     new cdk.CfnOutput(this, 'OAIIdentity', {
       value: originAccessIdentity.cloudFrontOriginAccessIdentityS3CanonicalUserId,
       description: 'Origin Access Identity for CloudFront',
-      exportName: `OAIIdentity-${environment}`,
+      exportName: `OAIIdentity-${environment}-${timestamp}`,
     });
   }
 }

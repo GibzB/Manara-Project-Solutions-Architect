@@ -1,0 +1,68 @@
+[
+    {
+        "OutputKey": "ProcessingQueueUrl",
+        "OutputValue": "https://sqs.eu-west-1.amazonaws.com/742710068514/image-processing-queue-dev-1793249813036",
+        "Description": "SQS queue for image processing",
+        "ExportName": "ProcessingQueueUrl-dev-1793249813036"
+    },
+    {
+        "OutputKey": "DeadLetterQueueUrl",
+        "OutputValue": "https://sqs.eu-west-1.amazonaws.com/742710068514/image-processing-dlq-dev-1793249813036",
+        "Description": "Dead letter queue for failed image processing messages",
+        "ExportName": "DeadLetterQueueUrl-dev-1793249813036"
+    },
+    {
+        "OutputKey": "TempBucketName",
+        "OutputValue": "processing-temp-dev-1793249813036",
+        "Description": "Temporary bucket for intermediate files",
+        "ExportName": "TempBucketName-dev-1793249813036"
+    },
+    {
+        "OutputKey": "SourceBucketName",
+        "OutputValue": "source-images-dev-1793249813036",
+        "Description": "Source bucket for incoming images",
+        "ExportName": "SourceBucketName-dev-1793249813036"
+    },
+    {
+        "OutputKey": "EventQueueUrl",
+        "OutputValue": "https://sqs.eu-west-1.amazonaws.com/742710068514/s3-events-dev-1793249813036",
+        "Description": "SQS queue for S3 events",
+        "ExportName": "EventQueueUrl-dev-1793249813036"
+    },
+    {
+        "OutputKey": "DestinationBucketName",
+        "OutputValue": "processed-images-dev-1793249813036",
+        "Description": "Destination bucket for processed images",
+        "ExportName": "DestinationBucketName-dev-1793249813036"
+    },
+    {
+        "OutputKey": "EventQueueArn",
+        "OutputValue": "arn:aws:sqs:eu-west-1:742710068514:s3-events-dev-1793249813036",
+        "Description": "SQS queue ARN for S3 events",
+        "ExportName": "EventQueueArn-dev-1793249813036"
+    },
+    {
+        "OutputKey": "OAIIdentity",
+        "OutputValue": "78da8fae7f8ae3d56e40d20585f4971a6cf0190b8e1b9d8f088254f0c176418dafe77927ed1118b063fc840cbfea2b80",
+        "Description": "Origin Access Identity for CloudFront",
+        "ExportName": "OAIIdentity-dev-1793249813036"
+    },
+    {
+        "OutputKey": "ProcessingQueueArn",
+        "OutputValue": "arn:aws:sqs:eu-west-1:742710068514:image-processing-queue-dev-1793249813036",
+        "Description": "SQS queue ARN for image processing",
+        "ExportName": "ProcessingQueueArn-dev-1793249813036"
+    },
+    {
+        "OutputKey": "DeadLetterQueueArn",
+        "OutputValue": "arn:aws:sqs:eu-west-1:742710068514:image-processing-dlq-dev-1793249813036",
+        "Description": "Dead letter queue ARN for failed image processing messages",
+        "ExportName": "DeadLetterQueueArn-dev-1793249813036"
+    },
+    {
+        "OutputKey": "AccessLogsBucketName",
+        "OutputValue": "s3-access-logs-dev-1793249813036",
+        "Description": "Access logs bucket",
+        "ExportName": "AccessLogsBucketName-dev-1793249813036"
+    }
+]
